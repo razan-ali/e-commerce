@@ -1,17 +1,19 @@
 import 'package:ecommerce/Widgets.dart/inputField.dart';
-import 'package:ecommerce/signUp.dart';
+import 'package:ecommerce/Widgets.dart/passField.dart';
+import 'package:ecommerce/login.dart';
 import 'package:flutter/material.dart';
-import './screenSize.dart';
 import './consts.dart';
-import 'Widgets.dart/passField.dart';
+import './screenSize.dart';
 
-class Login extends StatelessWidget {
+class SignUp extends StatelessWidget {
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
           children: [
@@ -21,14 +23,35 @@ class Login extends StatelessWidget {
             Text(
               "Hello Again!",
               style: TextStyle(
-                  fontFamily: 'Relaway',
-                  color: grayText,
-                  fontWeight: FontWeight.w700,
-                  fontSize: ScreenSize.getScreenHeight(context, 0.04),
-                  decoration: TextDecoration.none),
+                fontFamily: 'Relaway',
+                color: grayText,
+                fontWeight: FontWeight.w700,
+                fontSize: ScreenSize.getScreenHeight(context, 0.04),
+                decoration: TextDecoration.none,
+              ),
             ),
             SizedBox(
               height: ScreenSize.getScreenHeight(context, 0.05),
+            ),
+            Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: ScreenSize.getScreenWidth(context, 0.05)),
+                    child: inputfield(
+                      context,
+                      "Your Name",
+                      "Enter your name",
+                      nameController,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: ScreenSize.getScreenHeight(context, 0.03),
             ),
             Container(
               child: Column(
@@ -48,7 +71,7 @@ class Login extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: ScreenSize.getScreenHeight(context, 0.04),
+              height: ScreenSize.getScreenHeight(context, 0.03),
             ),
             Container(
               padding: EdgeInsets.symmetric(
@@ -91,17 +114,18 @@ class Login extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "New User? ",
+                  "Already Have Account? ",
                   style: TextStyle(
                       fontFamily: 'Relaway', fontWeight: FontWeight.w500),
                 ),
                 GestureDetector(
                   onTap: () {
+                    // Replace the below line with the appropriate route for your registration page
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignUp()));
+                        MaterialPageRoute(builder: (context) => Login()));
                   },
                   child: Text(
-                    "Create Account",
+                    "Sign in",
                     style: TextStyle(
                         fontFamily: 'Relaway', fontWeight: FontWeight.w600),
                   ),
@@ -114,7 +138,6 @@ class Login extends StatelessWidget {
           ],
         ),
       ),
-      resizeToAvoidBottomInset: false,
     );
   }
 }

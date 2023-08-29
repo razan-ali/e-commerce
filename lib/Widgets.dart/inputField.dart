@@ -5,7 +5,6 @@ import '../screenSize.dart';
 
 Widget inputfield(
   BuildContext context,
-  TextEditingController nameController,
   String name,
   String hintText,
   TextEditingController Controller,
@@ -23,8 +22,10 @@ Widget inputfield(
             Text(
               name,
               style: TextStyle(
+                fontFamily: 'Relaway',
+                fontWeight: FontWeight.w600,
                 color: textColor,
-                fontSize: ScreenSize.getScreenWidth(context, .03),
+                fontSize: ScreenSize.getScreenWidth(context, .04),
               ),
             ),
           ],
@@ -47,7 +48,12 @@ Widget inputfield(
                   customBorder, // Use the custom rounded border when focused
 
               hintText: hintText,
-              hintStyle: const TextStyle(color: Colors.grey),
+              hintStyle: TextStyle(
+                fontFamily: 'Relaway',
+                fontWeight: FontWeight.w500,
+                color: Colors.grey,
+                fontSize: ScreenSize.getScreenWidth(context, 0.035),
+              ),
             ),
           ),
         ),
