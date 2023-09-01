@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:test_ff/explore.dart';
+import './explore.dart';
 import './Widgets.dart/inputField.dart';
 import './home.dart';
 import './signUp.dart';
 import './screenSize.dart';
 import './consts.dart';
 import 'Widgets.dart/passField.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Login extends StatelessWidget {
   TextEditingController emailController = TextEditingController();
@@ -107,7 +108,7 @@ class Login extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "New User? ",
                   style: TextStyle(
                       fontFamily: 'Relaway', fontWeight: FontWeight.w500),
@@ -117,7 +118,7 @@ class Login extends StatelessWidget {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => SignUp()));
                   },
-                  child: Text(
+                  child: const Text(
                     "Create Account",
                     style: TextStyle(
                         fontFamily: 'Relaway', fontWeight: FontWeight.w600),
@@ -134,4 +135,7 @@ class Login extends StatelessWidget {
       resizeToAvoidBottomInset: false,
     );
   }
+ 
+  
+
 }

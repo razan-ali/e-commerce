@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_ff/consts.dart';
-import 'package:test_ff/screenSize.dart';
+import './consts.dart';
+import './screenSize.dart';
 
 class cart extends StatelessWidget {
   const cart({super.key});

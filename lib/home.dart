@@ -1,11 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:test_ff/cart.dart';
-import 'package:test_ff/consts.dart';
-import 'package:test_ff/explore.dart';
-import 'package:test_ff/screenSize.dart';
+import './cart.dart';
+import './consts.dart';
+import './explore.dart';
+import './screenSize.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({Key? key}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -14,11 +15,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int currectTab = 0;
   final List<Widget> screens = [
-    explore(),
+    Explore(),
     cart(),
   ];
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currectScreen = explore();
+  Widget currectScreen = Explore();
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +39,7 @@ class _HomeState extends State<Home> {
               'assets/bag.png', // Replace with the actual path to your image
               color: Colors.white,
             ),
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => cart()));
-            },
+            onPressed: () {},
           ),
         ),
       ),
@@ -63,7 +61,7 @@ class _HomeState extends State<Home> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currectScreen = explore();
+                        currectScreen = Explore();
                         currectTab = 0;
                         print(currectTab);
                         print("|333");
@@ -84,8 +82,8 @@ class _HomeState extends State<Home> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currectScreen = explore();
-                        currectTab = 0;
+                        currectScreen = cart();
+                        currectTab = 1;
                         print(currectTab);
                         print("|222");
                       });
@@ -111,7 +109,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       setState(() {
                         currectScreen = cart();
-                        currectTab = 1;
+                        currectTab = 2;
                         print(currectTab);
                       });
                     },
@@ -130,8 +128,8 @@ class _HomeState extends State<Home> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currectScreen = explore();
-                        currectTab = 0;
+                        currectScreen = Explore();
+                        currectTab = 4;
                       });
                     },
                     child: Column(
