@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:test_ff/explore.dart';
 import './Widgets.dart/inputField.dart';
 import './home.dart';
 import './signUp.dart';
@@ -85,7 +86,7 @@ class Login extends StatelessWidget {
                           password: passController.text)
                       .then((UserCredential userCredential) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => home()));
+                        MaterialPageRoute(builder: (context) => Home()));
 
                     print("Sign in successful");
                   }).catchError((error) {
