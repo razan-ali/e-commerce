@@ -39,7 +39,10 @@ class _HomeState extends State<Home> {
               'assets/bag.png', // Replace with the actual path to your image
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => cart()));
+            },
           ),
         ),
       ),

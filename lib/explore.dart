@@ -12,6 +12,7 @@ class Explore extends StatefulWidget {
 
 class _ExploreState extends State<Explore> {
   String selectedOption = "ALL";
+  List<String>? categories = ["All", "Outdoor", "Tennis", "Work"];
 
   TextEditingController searchCont = TextEditingController();
   final customBorder = OutlineInputBorder(
@@ -87,7 +88,7 @@ class _ExploreState extends State<Explore> {
                     style: TextStyle(
                         fontFamily: 'Relaway',
                         color: grayText,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                         fontSize: ScreenSize.getScreenHeight(context, 0.02),
                         decoration: TextDecoration.none),
                   ),
@@ -99,13 +100,15 @@ class _ExploreState extends State<Explore> {
               height: ScreenSize.getScreenHeight(context, 0.1),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 10,
+                itemCount: categories!.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     padding: EdgeInsets.symmetric(vertical: 18, horizontal: 6),
                     width: ScreenSize.getScreenWidth(context, 0.3),
                     child: ElevatedButton(
                       style: ButtonStyle(
+                        shadowColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.white),
                         foregroundColor:
@@ -119,7 +122,14 @@ class _ExploreState extends State<Explore> {
                         ),
                       ),
                       onPressed: () {},
-                      child: Text("Outdoor"),
+                      child: Text(
+                        categories![index],
+                        style: TextStyle(
+                            fontFamily: 'Relaway',
+                            color: grayText,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none),
+                      ),
                     ),
                   );
                 },
@@ -133,7 +143,6 @@ class _ExploreState extends State<Explore> {
                 itemCount: 11,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    height: 150,
                     margin: EdgeInsets.all(10.0),
                     child: Card(
                       color: Colors.white,
@@ -149,36 +158,83 @@ class _ExploreState extends State<Explore> {
                           Row(
                             children: [
                               Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 11),
-                                  child: Icon(Icons.heart_broken_outlined))
+                                margin: EdgeInsets.symmetric(horizontal: 11),
+                                child: Image.asset(
+                                  'assets/heart.png',
+                                  width: 30,
+                                  height: 30,
+                                ),
+                              ),
                             ],
                           ),
-                          Container(
+                          Center(
+                            child: Container(
                               margin: EdgeInsets.symmetric(horizontal: 11),
-                              color: Colors.black,
-                              height: ScreenSize.getScreenHeight(context, 0.1)),
+                              height: ScreenSize.getScreenHeight(context, 0.1),
+                              child: Image.asset(
+                                'assets/nike.png',
+                                width: double.infinity,
+                                height: double.infinity,
+                              ),
+                            ),
+                          ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "Nike Jordan",
-                                style: TextStyle(
-                                    fontFamily: 'Relaway',
-                                    color: grayText,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: ScreenSize.getScreenHeight(
-                                        context, 0.02),
-                                    decoration: TextDecoration.none),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: ScreenSize.getScreenWidth(
+                                        context, 0.03),
+                                  ),
+                                  Text(
+                                    "Nike Jordan",
+                                    style: TextStyle(
+                                        fontFamily: 'Relaway',
+                                        color: grayText,
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.none),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                "150RS",
-                                style: TextStyle(
-                                    fontFamily: 'Relaway',
-                                    color: grayText,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: ScreenSize.getScreenHeight(
-                                        context, 0.02),
-                                    decoration: TextDecoration.none),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: ScreenSize.getScreenWidth(
+                                        context, 0.03),
+                                  ),
+                                  Text(
+                                    "550 RS",
+                                    style: TextStyle(
+                                        fontFamily: 'Relaway',
+                                        color: grayText,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: ScreenSize.getScreenHeight(
+                                            context, 0.02),
+                                        decoration: TextDecoration.none),
+                                  ),
+                                  SizedBox(
+                                    width: 60,
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color:
+                                            blueColor, // Set the background color
+                                        borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(15.0),
+                                        ),
+                                      ),
+                                      height: 40,
+                                      // Make width and height equal for a perfect circle
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
