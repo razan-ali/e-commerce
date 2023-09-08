@@ -33,7 +33,7 @@ class _CartState extends State<Cart> {
         id: 2,
         quantity: 5,
         pic: 'product_image2.jpg',
-        name: 'Air force',
+        name: 'Air Force',
         price: 400,
       ),
     ];
@@ -147,6 +147,7 @@ class _CartState extends State<Cart> {
                   ),
                   child: Card(
                     color: Colors.blue,
+                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     child: Material(
                       elevation: 3,
                       borderRadius: BorderRadius.circular(10.0),
@@ -176,8 +177,7 @@ class _CartState extends State<Cart> {
                               ),
                             ),
                             Container(
-                              color: Colors.red,
-                              width: ScreenSize.getScreenWidth(context, 0.3),
+                              width: ScreenSize.getScreenWidth(context, 0.28),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -213,49 +213,102 @@ class _CartState extends State<Cart> {
                               ),
                             ),
                             Container(
-                              color: Colors.blue,
                               width: ScreenSize.getScreenWidth(context, 0.3),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                  Column(
                                     children: [
-                                      IconButton(
-                                        color: Colors.red,
-                                        iconSize: 15,
-                                        icon: Icon(Icons.remove,
-                                            color: Colors.white),
-                                        onPressed: () {
-                                          setState(() {
-                                            if (productList[index].quantity >
-                                                1) {
-                                              productList[index].quantity--;
-                                            }
-                                            subtotal =
-                                                calculateSubtotal(productList);
-                                            total = subtotal + delivery;
-                                          });
-                                        },
+                                      SizedBox(
+                                        height: 40,
                                       ),
-                                      Text(
-                                        '${productList[index].quantity}',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      IconButton(
-                                        icon: Icon(Icons.add,
-                                            color: Colors.white),
-                                        onPressed: () {
-                                          setState(() {
-                                            productList[index].quantity++;
-                                            subtotal =
-                                                calculateSubtotal(productList);
-                                            total = subtotal + delivery;
-                                          });
-                                        },
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: SizedBox(),
+                                          ),
+                                          Container(
+                                            height: 35,
+                                            width: 35,
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  if (productList[index]
+                                                          .quantity >
+                                                      1) {
+                                                    productList[index]
+                                                        .quantity--;
+                                                  }
+                                                  subtotal = calculateSubtotal(
+                                                      productList);
+                                                  total = subtotal + delivery;
+                                                });
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                shape:
+                                                    CircleBorder(), // Makes the button circular
+                                                primary: Colors
+                                                    .blue, // Sets the button background color to blue
+                                                padding: EdgeInsets.all(
+                                                    10.0), // Adjust the padding to make it smaller
+                                              ),
+                                              child: Center(
+                                                child: Icon(
+                                                  Icons.remove,
+                                                  color: Colors
+                                                      .white, // Sets the icon color to white
+                                                  size:
+                                                      15.0, // Adjust the icon size
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 6,
+                                          ),
+                                          Text(
+                                            '${productList[index].quantity.toString().padLeft(3)}',
+                                            style: TextStyle(
+                                              color: textColor,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 6,
+                                          ),
+                                          Container(
+                                            height: 35,
+                                            width: 35,
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  productList[index].quantity++;
+                                                  subtotal = calculateSubtotal(
+                                                      productList);
+                                                  total = subtotal + delivery;
+                                                });
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                shape:
+                                                    CircleBorder(), // Makes the button circular
+                                                primary: Colors
+                                                    .blue, // Sets the button background color to blue
+                                                padding: EdgeInsets.all(
+                                                    10.0), // Adjust the padding to make it smaller
+                                              ),
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors
+                                                    .white, // Sets the icon color to white
+                                                size:
+                                                    15.0, // Adjust the icon size
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 6,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -417,6 +470,9 @@ class _CartState extends State<Cart> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                )
               ],
             ),
           ),
